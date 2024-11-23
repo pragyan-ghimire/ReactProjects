@@ -1,0 +1,9 @@
+.NBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: beige;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+}
