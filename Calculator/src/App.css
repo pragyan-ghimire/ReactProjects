@@ -15,20 +15,35 @@ gap: 10px;
 }
 .normalBtnElements{
     display: grid;
-    /* grid-template-rows: repeat(3,80px); */
+    grid-template-rows: repeat(3,80px);
     grid-template-columns: repeat(3,80px);
     gap: 10px;
+    
 }
-/* .normalBtnElements > :last-child{
+.normalBtnElements > *{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: beige;
+    border-radius: 8px;
+}
+.normalBtnElements > :last-child{
     grid-column:1 / span 3 ;
-} */
+}
 .specialBtnElements{
     display: grid;
-    /* grid-template-rows: repeat(3,80px); */
+    grid-template-rows: repeat(3,80px);
     grid-template-columns: repeat(2,80px);
     gap: 10px;
 }
-/* .specialBtnElements > :last-child{
-    grid-column: 1fr;
-} */
+.specialBtnElements > *{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: beige;
+    border-radius: 8px;
+}
+.specialBtnElements > :last-child{
+    grid-column: 1/ span 2;
+}
 /* TODO: expand 0 and =  */
