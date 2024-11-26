@@ -7,77 +7,70 @@ import SpecialButtons from "./components/SpecialButtons";
 function App() {
   const normalNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   const specialBtn = ["DEL", "AC", "X", "/", "+", "-", "="];
-  const [fNum, setFNum] = useState(null);
-  const [sNum, setSNum] = useState(null);
-  const [operation, setOperation] = useState(null);
-  const [answer, setAnswer] = useState(null);
-  const [num, setNum] = useState([]);
-  const [isFirstOperand, setIsFirstOperand] = useState(true);
+  const [prevOperand, setPrevOperand] = useState("");
+  const [nextOperand, setNextOperand] = useState("");
+  const [operation, setOperation] = useState("");
+  const [isEqualClicked, setIsEqualClicked] =useState(false);
+  const [answer, setAnswer] = useState("");
+  const [isNextOperand, setIsNextOperand] = useState(false);
 
+  useEffect(()=>{
+    if(nextOperand.length !== 0 && isEqualClicked){
+      handleOperation(operation);
+      setIsEqualClicked(false);
+      setIsNextOperand(false);
+      setNextOperand("");
+      setOperation("");
+    }
+  },[nextOperand, operation,isEqualClicked]);
   function handleOperation(operator) {
+    const firstOperand = parseInt(prevOperand);
+    const secondOperand = parseInt(nextOperand);
+    let result;
     switch (operator) {
       case "+":
-        setAnswer(fNum + sNum);
+        result = firstOperand + secondOperand;
+        setAnswer(result.toString())
         break;
       case "-":
-        setAnswer(fNum - sNum);
+        result = firstOperand - secondOperand;
+        setAnswer(result.toString())
         break;
       case "X":
-        setAnswer(fNum * sNum);
+        result = firstOperand * secondOperand;
+        setAnswer(result.toString())
         break;
       case "/":
-        setAnswer(fNum / sNum);
+        result = firstOperand / secondOperand;
+        setAnswer(result.toString())
         break;
+
       default:
         break;
     }
   }
-  useEffect(() => {
-    if (sNum !== null && operation) {
-      // console.log("Props updated, performing calculation...");
-      handleOperation(operation);
-    }
-  }, [operation, sNum]);
-
-  //logic: Enter number until a operational button is clicked
-  //After first opBtn appears, num is set to empty for second number
   function handleNumClick(number) {
-    let cpyNum = [...num];
-    if (!specialBtn.includes(number)) {
-      cpyNum.push(number);
-      setNum(cpyNum);
+    if (isNextOperand) {
+      setNextOperand((prevVal) => {
+        return prevVal + number;
+      });
     } else {
-      setIsFirstOperand(false);
-      setNum([0]);
-    }
-    if (isFirstOperand) {
-      let n = parseInt(cpyNum.join(""));
-      setFNum(n);
-    } else {
-      let n = parseInt(cpyNum.join(""));
-      setSNum(n);
+      setPrevOperand((prevVal) => {
+        return prevVal + number;
+      });
     }
   }
- 
-  function handleOperationClick(btn) {
-    if (btn === "AC") {
-      setFNum(null);
-      setSNum(null);
-      setNum([]);
-      setIsFirstOperand(true);
-      setOperation(null);
-      setAnswer(null);
-    } else {
-      if (answer !== null) {
-        setFNum(answer);
-        setSNum(null);
-        setAnswer(null);
-        setNum([]);
-        setIsFirstOperand(false);
-        setOperation(null);
-      } else {
-        setOperation(btn);
+
+  function handleOperatorClick(btn) {
+    if(btn === "="){
+      setIsEqualClicked(true);
+    }else{
+      if(answer.length !== 0){
+        setPrevOperand(answer);
       }
+      setOperation(btn);
+      setIsNextOperand(true);
+      // console.log("clicked");
     }
   }
 
@@ -85,8 +78,8 @@ function App() {
     <>
       <div className="container">
         <DisplayEquation
-          fNum={fNum}
-          sNum={sNum}
+          prevOperand={prevOperand}
+          nextOperand={nextOperand}
           operation={operation}
           answer={answer}
         />
@@ -103,13 +96,7 @@ function App() {
           <div className="specialBtnElements">
             {specialBtn.map((btn, index) => {
               return (
-                <div
-                  key={index}
-                  onClick={() => {
-                    handleNumClick(btn);
-                    handleOperationClick(btn);
-                  }}
-                >
+                <div key={index} onClick={() => handleOperatorClick(btn)}>
                   <SpecialButtons button={btn} />
                 </div>
               );

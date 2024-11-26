@@ -6,13 +6,10 @@ const DisplayEquation = (props) => {
 
   return (
     <div className="displayEqn">
-      {props.operation === "=" ? (
-        <h2>{props.answer}</h2>
-      ) : ( props.operation === "AC"? null :
-        <h2>
-          {props.fNum} {props.operation} {props.sNum}
-        </h2>
-      )}
+      {
+        props.answer.length !== 0 && props.operation.length == 0 ? <h2>{props.answer}</h2>:<h2>{props.prevOperand} {props.operation} {props.nextOperand}</h2>
+      }
+      
     </div>
   );
 };
