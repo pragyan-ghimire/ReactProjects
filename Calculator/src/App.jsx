@@ -8,21 +8,23 @@ function App() {
   const normalNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   const specialBtn = ["DEL", "AC", "X", "/", "+", "-", "="];
   const [prevOperand, setPrevOperand] = useState("");
-  const [nextOperand, setNextOperand] = useState("");
   const [operation, setOperation] = useState("");
-  const [isEqualClicked, setIsEqualClicked] =useState(false);
-  const [answer, setAnswer] = useState("");
   const [isNextOperand, setIsNextOperand] = useState(false);
+  const [nextOperand, setNextOperand] = useState("");
+  const [isEqualClicked, setIsEqualClicked] = useState(false);
+  const [answer, setAnswer] = useState("");
 
-  useEffect(()=>{
-    if(nextOperand.length !== 0 && isEqualClicked){
+  useEffect(() => {
+    if (nextOperand.length !== 0 && isEqualClicked) {
       handleOperation(operation);
       setIsEqualClicked(false);
       setIsNextOperand(false);
+      setPrevOperand("");
       setNextOperand("");
       setOperation("");
     }
-  },[nextOperand, operation,isEqualClicked]);
+  }, [nextOperand, operation, isEqualClicked]);
+
   function handleOperation(operator) {
     const firstOperand = parseInt(prevOperand);
     const secondOperand = parseInt(nextOperand);
@@ -30,19 +32,19 @@ function App() {
     switch (operator) {
       case "+":
         result = firstOperand + secondOperand;
-        setAnswer(result.toString())
+        setAnswer(result.toString());
         break;
       case "-":
         result = firstOperand - secondOperand;
-        setAnswer(result.toString())
+        setAnswer(result.toString());
         break;
       case "X":
         result = firstOperand * secondOperand;
-        setAnswer(result.toString())
+        setAnswer(result.toString());
         break;
       case "/":
         result = firstOperand / secondOperand;
-        setAnswer(result.toString())
+        setAnswer(result.toString());
         break;
 
       default:
@@ -62,20 +64,20 @@ function App() {
   }
 
   function handleOperatorClick(btn) {
-    if(btn === "="){
+    if (btn === "=") {
       setIsEqualClicked(true);
-    }else if(btn === "AC"){
+    } else if (btn === "AC") {
       setIsEqualClicked(false);
       setIsNextOperand(false);
       setNextOperand("");
       setPrevOperand("");
       setAnswer("");
       setOperation("");
-    }else{
-      if(answer.length !== 0){
+    } else {
+      if (answer.length !== 0) {
         setPrevOperand(answer);
       }
-      
+
       setOperation(btn);
       setIsNextOperand(true);
       // console.log("clicked");
