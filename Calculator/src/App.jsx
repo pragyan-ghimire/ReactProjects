@@ -64,10 +64,18 @@ function App() {
   function handleOperatorClick(btn) {
     if(btn === "="){
       setIsEqualClicked(true);
+    }else if(btn === "AC"){
+      setIsEqualClicked(false);
+      setIsNextOperand(false);
+      setNextOperand("");
+      setPrevOperand("");
+      setAnswer("");
+      setOperation("");
     }else{
       if(answer.length !== 0){
         setPrevOperand(answer);
       }
+      
       setOperation(btn);
       setIsNextOperand(true);
       // console.log("clicked");
