@@ -1,11 +1,12 @@
 
 import './App.css'
+import TypingAreaComponent from './components/TypingAreaComponent'
 
 function App() {
 
   return (
     <>
-      App works
+      <TypingAreaComponent />
     </>
   )
 }
