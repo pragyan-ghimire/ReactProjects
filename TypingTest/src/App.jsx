@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import TypingAreaComponent from "./components/TypingAreaComponent";
+import ResultComponent from "./components/ResultComponent";
 
 function App() {
   const [text, setText] = useState("");
@@ -49,15 +50,16 @@ function App() {
   return (
     <>
       <div className="h-screen">
-        <TypingAreaComponent
+        {/* <TypingAreaComponent
           onChange={handleChange}
           onCharCheck={handleCharCheck}
           text={text}
           disable={disable}
           time={time}
-        />
-        <p>{totalCharacterCount}</p>
-        <p>{errorCharacterCount}</p>
+        /> */}
+        {/* <p>{totalCharacterCount}</p>
+        <p>{errorCharacterCount}</p> */}
+        <ResultComponent />
       </div>
     </>
   );
