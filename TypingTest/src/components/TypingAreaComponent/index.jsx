@@ -53,3 +53,4 @@ const TypingAreaComponent = (props) => {
 };
 
 export default TypingAreaComponent;
+// TODO: If one letter is more or less then every following letters will be counted as error
