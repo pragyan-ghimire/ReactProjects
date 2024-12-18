@@ -8,7 +8,7 @@ function App() {
   const [isTyping, setIsTyping] = useState(false);
   const [disable, setDisable] = useState(false);
   const [time, setTime] = useState(0);
-  const [totalCharacterCount, settotalCharacterCount] = useState(0);
+  const [totalCharacterCount, setTotalCharacterCount] = useState(0);
   const [errorCharacterCount, setErrorCharacterCount] = useState(0);
 
   // For timer
@@ -34,7 +34,7 @@ function App() {
     if (time < 30) {
       setTime((preVal) => preVal + 1);
     } else {
-      settotalCharacterCount(text.length);
+      setTotalCharacterCount(text.length);
       setDisable(true);
       setIsTyping(false);
     }
@@ -46,20 +46,43 @@ function App() {
   }
 
   //Reset function
+  function resetToDefault(){
+    setIsTyping(false);
+    setDisable(false);
+    setText("");
+    setTime(0);
+    setTotalCharacterCount(0);
+    setErrorCharacterCount(0);
+  }
 
   return (
     <>
       <div className="h-screen">
-        {/* <TypingAreaComponent
+        {/* {
+          disable ? 
+          <ResultComponent 
+          totalCharacterCount = {totalCharacterCount}
+          errorCharacterCount = {errorCharacterCount}
+          /> : 
+          <TypingAreaComponent
           onChange={handleChange}
           onCharCheck={handleCharCheck}
           text={text}
           disable={disable}
           time={time}
-        /> */}
-        {/* <p>{totalCharacterCount}</p>
-        <p>{errorCharacterCount}</p> */}
-        <ResultComponent />
+        />
+        } */}
+        <TypingAreaComponent
+          onChange={handleChange}
+          onCharCheck={handleCharCheck}
+          text={text}
+          disable={disable}
+          time={time}
+        />
+        <ResultComponent 
+          totalCharacterCount = {totalCharacterCount}
+          errorCharacterCount = {errorCharacterCount}
+          /> 
       </div>
     </>
   );
