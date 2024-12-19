@@ -62,6 +62,7 @@ const TypingAreaComponent = (props) => {
       // checkCharacters();
       checkWords();
     }
+
   },[props.disable, props.text]);
   
   useEffect(() => {  
@@ -70,6 +71,13 @@ const TypingAreaComponent = (props) => {
     }
     console.log(errorCount);
   }, [errorCount]);
+
+  useEffect(() => {  
+    if(props.reset){
+      setErrorCount(0);
+    }
+  }, [props.reset,errorCount]);
+
 
   return (
     <div className="flex flex-col items-center bg-slate-100">

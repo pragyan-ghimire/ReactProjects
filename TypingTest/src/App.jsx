@@ -10,6 +10,7 @@ function App() {
   const [time, setTime] = useState(0);
   const [totalCharacterCount, setTotalCharacterCount] = useState(0);
   const [errorCharacterCount, setErrorCharacterCount] = useState(0);
+  const [reset, setReset] = useState(false);
 
   // For timer
   useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
   // to handle text area
   function handleChange(e) {
     setText(e.target.value);
+    setReset(false);//when start to type set reset to false
     if (!isTyping) {
       setIsTyping(true);
     }
@@ -53,6 +55,7 @@ function App() {
     setTime(0);
     setTotalCharacterCount(0);
     setErrorCharacterCount(0);
+    setReset(true);// after reset is clicked
   }
 
   return (
@@ -78,6 +81,7 @@ function App() {
           text={text}
           disable={disable}
           time={time}
+          reset = {reset}
         />
         <ResultComponent 
           totalCharacterCount = {totalCharacterCount}
