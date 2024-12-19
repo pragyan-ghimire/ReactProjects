@@ -21,12 +21,12 @@ const TypingAreaComponent = (props) => {
     let typedWords = props.text.split(" ");
 
     // loop with respect to number of typedWords
-    for (let i = 0; i < typedWords.length(); i++) {
+    for (let i = 0; i < typedWords.length; i++) {
 
       // if testWord has more letters that typedWord
       if(testWords[i].length > typedWords[i].length){
         for (let j = 0; j < testWords[i].length; j++) {
-          // comparing each characters of typedWord with testWord
+          // comparing each characters of testWord with typedWord
           if((typedWords[i])[j] !== (testWords[i])[j]){
             setErrorCount(prev => prev+1);
           }
@@ -36,7 +36,7 @@ const TypingAreaComponent = (props) => {
       // if typedWord has more letters than testWord
       else if(typedWords[i].length > testWords[i].length){
         for (let j = 0; j < typedWords[i].length; j++) {
-          // comparing each characters of testWord with typedWord
+          // comparing each characters of typedWord with testWord
           if((testWords[i])[j] !== (typedWords[i])[j]){
             setErrorCount(prev => prev+1);
           }
@@ -44,9 +44,13 @@ const TypingAreaComponent = (props) => {
       }
       
       else{
-        if((typedWords[i])[j] !== (testWords[i])[j]){
-          setErrorCount(prev => prev+1);
-        }  
+        for (let j = 0; j < typedWords[i].length; j++) {
+          // comparing each characters of typedWord with testWord
+          if((typedWords[i])[j] !== (testWords[i])[j]){
+            setErrorCount(prev => prev+1);
+          }  
+        }
+        
       }
       
       
