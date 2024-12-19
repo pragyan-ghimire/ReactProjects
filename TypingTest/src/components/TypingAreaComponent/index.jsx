@@ -89,7 +89,7 @@ const TypingAreaComponent = (props) => {
           {testText}
         </p>
         <textarea
-          className="text-justify p-5 w-full bg-slate-400 leading-loose tracking-wider overflow-hidden"
+          className="text-justify p-5 w-full bg-slate-400 leading-loose tracking-wider"
           id="typingArea"
           type="text"
           name="typedText"
