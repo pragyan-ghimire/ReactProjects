@@ -6,18 +6,57 @@ const TypingAreaComponent = (props) => {
   const testText = data[0].text;
 
   // checking character when disable is true
-  function checkCharacters(){
-    for (let i = 0; i < props.text.length; i++) {
-      if(!(props.text[i] === testText[i])){
-        setErrorCount(prev => prev+1);
+  // function checkCharacters(){
+  //   for (let i = 0; i < props.text.length; i++) {
+  //     if(!(props.text[i] === testText[i])){
+  //       setErrorCount(prev => prev+1);
+  //     }
+      
+  //   }
+  // }
+
+  //check for word
+  function checkWords(){
+    let testWords = testText.split(" ");
+    let typedWords = props.text.split(" ");
+
+    // loop with respect to number of typedWords
+    for (let i = 0; i < typedWords.length(); i++) {
+
+      // if testWord has more letters that typedWord
+      if(testWords[i].length > typedWords[i].length){
+        for (let j = 0; j < testWords[i].length; j++) {
+          // comparing each characters of typedWord with testWord
+          if((typedWords[i])[j] !== (testWords[i])[j]){
+            setErrorCount(prev => prev+1);
+          }
+        }
       }
+      
+      // if typedWord has more letters than testWord
+      else if(typedWords[i].length > testWords[i].length){
+        for (let j = 0; j < typedWords[i].length; j++) {
+          // comparing each characters of testWord with typedWord
+          if((testWords[i])[j] !== (typedWords[i])[j]){
+            setErrorCount(prev => prev+1);
+          }
+        }
+      }
+      
+      else{
+        if((typedWords[i])[j] !== (testWords[i])[j]){
+          setErrorCount(prev => prev+1);
+        }  
+      }
+      
       
     }
   }
 
   useEffect(()=>{
     if(props.disable){
-      checkCharacters();
+      // checkCharacters();
+      checkWords();
     }
   },[props.disable, props.text]);
   
