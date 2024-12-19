@@ -26,7 +26,7 @@ const ResultComponent = (props) => {
         </div>
       </div>
       <div>
-        <button className="py-3 px-6 bg-slate-900 rounded-lg">Reset</button>
+        <button className="py-3 px-6 bg-slate-900 rounded-lg" onClick={props.resetToDefault}>Reset</button>
       </div>
     </div>
   );

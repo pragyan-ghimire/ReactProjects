@@ -82,6 +82,7 @@ function App() {
         <ResultComponent 
           totalCharacterCount = {totalCharacterCount}
           errorCharacterCount = {errorCharacterCount}
+          resetToDefault = {resetToDefault}
           /> 
       </div>
     </>
