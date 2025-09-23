@@ -2,6 +2,13 @@
 @plugin "daisyui"{
   themes: light --default, dark --prefersdark, cyberpunk;
 }
+
+@layer base{
+  h1 {
+    @apply text-3xl font-bold mb-3 ;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
