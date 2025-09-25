@@ -2,7 +2,7 @@ import React from 'react'
 
 interface PhotoDetailPageProps {
   params: {
-    id: string,
+    id: number,
     photoId: string
   }
 }

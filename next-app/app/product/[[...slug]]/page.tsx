@@ -5,18 +5,18 @@ interface Props{
         slug: string[]
     };
     searchParams: {
-      type: string
+      name: string
     }
 }
 
-const Entertainment = async({params, searchParams}: Props) => {
+const Product = async({params, searchParams}: Props) => {
     const {slug} = await params;
-    const {type} = await searchParams;
+    const {name} = await searchParams;
   return (
     <div>
-      Entertainment {slug}: {type}
+      Entertainment {slug}: {name}
     </div>
   )
 }
 
-export default Entertainment
+export default Product
