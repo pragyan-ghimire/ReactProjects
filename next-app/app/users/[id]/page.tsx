@@ -3,11 +3,11 @@ import React from 'react'
 
 interface UserDetailPageProps {
   params: {
-    id: number
+    id: string
   }
 }
 const UserDetailPage = (props: UserDetailPageProps) => {
-  if (props.params.id > 10) notFound();
+  if (props.params.id > "10") notFound();
   return (
     <div>
       <h1>UserDetailPage{props.params.id}</h1>
