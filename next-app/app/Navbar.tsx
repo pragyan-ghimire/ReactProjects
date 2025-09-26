@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react'
 
 const Navbar = () => {
   const {status, data: session} = useSession();
+  console.log(status);
   return (
     <div className='flex bg-slate-200 p-4 gap-4'>
       <Link href="/">Logo</Link>
