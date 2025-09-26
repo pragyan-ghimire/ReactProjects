@@ -6,6 +6,7 @@ const Navbar = () => {
     <div className='flex bg-slate-200 p-4 gap-4'>
       <Link href="/">Logo</Link>
       <Link href="/users">Users</Link>
+      <Link href="/api/auth/signin">Sign in</Link>
     </div>
   )
 }
