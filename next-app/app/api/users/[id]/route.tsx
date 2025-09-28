@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import schema,{updateSchema} from "../schema";
+import {updateSchema} from "../schema";
 import {prisma} from "@/prisma/client";
 
 type Props = {

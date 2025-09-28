@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { email, z } from "zod";
+import { z } from "zod";
 import bcrypt from "bcrypt";
 import { prisma } from "@/prisma/client";
 
