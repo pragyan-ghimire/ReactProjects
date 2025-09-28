@@ -65,3 +65,9 @@ model VerificationToken {
   @@unique([identifier, token])
   @@map("verification_tokens")
 }
+
+model Product {
+  id String @id @default(cuid())
+  name String
+  price Float
+}

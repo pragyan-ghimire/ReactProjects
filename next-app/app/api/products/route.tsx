@@ -32,7 +32,6 @@ export async function POST(request: NextRequest){
         data: {
             name: parseProduct.data.name,
             price: parseProduct.data.price,
-            description: body.description || null,
         }
     })
     return NextResponse.json(product, {status: 201});
